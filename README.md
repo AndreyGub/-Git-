@@ -20,14 +20,15 @@
 
 ### Ответ
 
-*1. Полный хеш и комментарий коммита, хеш которого начинается на aefea:
+## 1. Полный хеш и комментарий коммита, хеш которого начинается на aefea:
+
    <img width="487" height="110" alt="image" src="https://github.com/user-attachments/assets/729d914d-1e7d-420b-b50d-037c8a6cb7bb" />
    
 Полный хеш: aefead2207ef7e2aa5dc81a34aedf0cad4c32545
 
 Комментарий: Update CHANGELOG.md
 
-Как получчили:
+* Как получчили:
 Для поиска коммита используется команду git show:
 
 
@@ -37,12 +38,12 @@ git show aefea --pretty=format:'Hash = %H %nComment: %s' -q
 
 -q (сокращение от --no-patch) подавляет вывод информации о изменениях в файлах
 
-*2. Какому тегу соответствует коммит 85024d3?
+## 2. Какому тегу соответствует коммит 85024d3?
 
 Ответ:
 Коммит 85024d3 соответствует тегу v0.12.23.
 
-Как получили:
+* Как получили:
 Информацию мможно получить с помощью git show или git log:
 <img width="489" height="52" alt="image" src="https://github.com/user-attachments/assets/a91a2955-da3d-444b-a032-f38a7cb90fa3" />
 git show 85024d3 --oneline -q
@@ -50,7 +51,7 @@ git show 85024d3 --oneline -q
 
 В выводе команды присутствует tag: v0.12.23
 
-*3. Сколько родителей у коммита b8d720? Напишите их хеши.
+## 3. Сколько родителей у коммита b8d720? Напишите их хеши.
 
 У коммита b8d720 два родителя
 
@@ -58,14 +59,14 @@ git show 85024d3 --oneline -q
 
 Хеш второго родителя: 9ea88f22f (полный: 9ea88f22fc6269854151c571162c5bcf958bee2b)
 
-Как получили:
+* Как получили:
 Определим через git show:
 <img width="519" height="122" alt="image" src="https://github.com/user-attachments/assets/c5a6cbbd-325f-4abf-a574-cfbf7b75eccd" />
 
 git show --source b8d720 --pretty=short
 В выводе есть строка Merge: 56cd7859e 9ea88f22f, которая указывает на два родительских коммита
 
-4. Перечислите хеши и комментарии всех коммитов, которые были сделаны между тегами v0.12.23 и v0.12.24.
+## 4. Перечислите хеши и комментарии всех коммитов, которые были сделаны между тегами v0.12.23 и v0.12.24.
 
 Между тегами v0.12.23 и v0.12.24 были сделаны коммиты:
 
@@ -81,7 +82,7 @@ d5f9411f5108260320064349b757f55c09bc4b80 command: Fix bug when using terraform l
 dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 225466bc3e5f35baa5d07197bbc079345b77525e Cleanup after v0.12.23 release
 
-Как получили:
+* Как получили:
 Для получения списка используем команду git log с указанием диапазона:
 
 <img width="765" height="189" alt="image" src="https://github.com/user-attachments/assets/00074415-2916-4dc1-bc57-508e537ce969" />
@@ -93,7 +94,7 @@ v0.12.23..v0.12.24 — стандартная запись диапазона в
 
 Чтобы исключить сам коммит v0.12.24, можно использовать v0.12.23..v0.12.24^.
 
-5. Найдите коммит, в котором была создана функция func providerSource
+## 5. Найдите коммит, в котором была создана функция func providerSource
 
 Функция func providerSource была создана в коммите:
 
@@ -101,7 +102,7 @@ v0.12.23..v0.12.24 — стандартная запись диапазона в
 
 Хеш (полный): 8c928e83589d90a031f811fae52a81be7153e82f
 
-Как получили:
+* Как получили:
 Для поиска коммита, используется опция -S (pickaxe) команды git log:
 
 <img width="572" height="58" alt="image" src="https://github.com/user-attachments/assets/fe73e001-3e8a-45fe-9a44-c754ccf05601" />
@@ -111,7 +112,7 @@ git log -S 'func providerSource(' --oneline
 
 Первый (самый старый) коммит в выдаче будет тем, где функция была создана.
 
-6. Найдите все коммиты, в которых была изменена функция globalPluginDirs
+## 6. Найдите все коммиты, в которых была изменена функция globalPluginDirs
 
 Найти файл, содержащий определение функции:
 
@@ -128,21 +129,21 @@ git log -S 'func providerSource(' --oneline
 c0b1761096	prevent log output during init
 8364383c35	Push plugin discovery down into command package
 
-Как получили: 
+* Как получили: 
 
 git log -S"globalPluginDirs" --oneline
 
 Команда находит все коммиты, в которых количество вхождений строки globalPluginDirs
 
 
-7. Кто автор функции synchronizedWriters?
+## 7. Кто автор функции synchronizedWriters?
 Команда
  git log -S"func synchronizedWriters(" --pretty="%h %an %ad" --reverse
 
 автор функции synchronizedWriters - Martin Atkins
 <img width="536" height="78" alt="image" src="https://github.com/user-attachments/assets/219e3ca7-0c58-49c3-b117-c54794d97da9" />
 
-Как получили:
+* Как получили:
 Для поиска первого упоминания функции используется команда git log с опцией -S:
 
 git log -S"func synchronizedWriters(" --pretty="%h %an %ad" --reverse
